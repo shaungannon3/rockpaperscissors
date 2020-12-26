@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Function library example</title>
+  <style>
+    input {
+      font-size: 2em;
+      margin: 10px 1px 0;
+    }
+  </style>
+</head>
+<body>
+  <p></p>
+  <script>
+
+function computerPlay(){
+  let numberPlay = Math.floor(Math.random() * 3);
+  return (numberPlay == 0 ? "Paper" : numberPlay == 1 ? "Rock" : "Scissors"); 
+}
+
+function playRound(playerSelection, computerSelection) {
+  let result;
+
+  if (playerSelection.toLowerCase() == computerSelection.toLowerCase()) {
+    console.log("You Tied! " + computerSelection + " ties " + playerSelection);
+    result = 0;
+  }
+  else {
+    switch (playerSelection.toLowerCase()){
+    case "rock":
+      switch (computerSelection.toLowerCase()){
+        case "scissors": 
+          console.log("You Win! " + playerSelection + " beats " + computerSelection); 
+          result = 1; 
+          break;
+        case "paper": 
+          console.log("You Lose! " + computerSelection + " beats " + playerSelection); 
+          result = -1; 
+          break;
+      } break;
+    case "scissors":
+      switch (computerSelection.toLowerCase()){
+        case "paper": 
+          console.log("You Win! " + playerSelection + " beats " + computerSelection); 
+          result = 1;
+          break;
+        case "rock": 
+          console.log("You Lose! " + computerSelection + " beats " + playerSelection); 
+          result = -1;
+          break;
+      } break;
+    case "paper":
+      switch (computerSelection.toLowerCase()){
+        case "rock": 
+          console.log("You Win! " + playerSelection + " beats " + computerSelection); 
+          result = 1;
+          break;
+        case "scissors": 
+          console.log("You Lose! " + computerSelection + " beats " + playerSelection); 
+          result = -1;
+          break;
+      } break;
+  }
+  }
+  return result;
+  }
+
+function game(){
+  function userPrompt(playerSelection = "", round = 1){
+    let acceptablePlays = ["rock", "paper", "scissors"];
+    
+    if (acceptablePlays.indexOf(playerSelection.toLowerCase()) == -1) {
+      playerSelection = prompt("Round #" + round + " Enter your play (rock, paper scissors):");
+      if (playerSelection == null) {
+        return null;
+      }
+      return userPrompt(playerSelection, round);
+    }  
+    return playerSelection;
+  }
+
+  let winCount = 0;
+  let lossCount = 0;
+  for (let i = 0; i < 5; i ++){
+    let playerSelection = userPrompt("", i+1);
+    if (playerSelection === null) {
+      return 0;
+    }
+    let computerSelection = computerPlay();
+    let result = playRound(playerSelection, computerSelection);
+    if (result == -1){
+      lossCount ++;
+    }
+    else if (result == 1){
+      winCount ++;
+    }
+  }
+  console.log((winCount > lossCount) ? "Game Over! You Win!" : (winCount < lossCount)? "Game Over! You Lose!": "Game Over You Tied!")
+  return 1;
+}
+  
+ game(); 
+
+
+  </script>
+</body>
+</html>
