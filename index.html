@@ -1,108 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Function library example</title>
-  <style>
-    input {
-      font-size: 2em;
-      margin: 10px 1px 0;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href = "styles.css">
+  <script src="script.js" defer = "true"></script>
+  <title>Document</title>
 </head>
 <body>
-  <p></p>
-  <script>
+  <div class = "header">
+    <h1>Rock, Paper, Scissors!!</h1>
+  </div>
 
-function computerPlay(){
-  let numberPlay = Math.floor(Math.random() * 3);
-  return (numberPlay == 0 ? "Paper" : numberPlay == 1 ? "Rock" : "Scissors"); 
-}
+  <div class = "scoreboard-container">
+    <div class = "individual-score-container">
+      <p class = "player-name">Player</p>
+      <p class = "score" id = "player-score">0</p>
+    </div>
 
-function playRound(playerSelection, computerSelection) {
-  let result;
+    <div class = "individual-score-container">
+      <p class = "player-name">Computer</p>
+      <p class = "score" id = "computer-score">0</p>
+    </div>
+  </div>
 
-  if (playerSelection.toLowerCase() == computerSelection.toLowerCase()) {
-    console.log("You Tied! " + computerSelection + " ties " + playerSelection);
-    result = 0;
-  }
-  else {
-    switch (playerSelection.toLowerCase()){
-    case "rock":
-      switch (computerSelection.toLowerCase()){
-        case "scissors": 
-          console.log("You Win! " + playerSelection + " beats " + computerSelection); 
-          result = 1; 
-          break;
-        case "paper": 
-          console.log("You Lose! " + computerSelection + " beats " + playerSelection); 
-          result = -1; 
-          break;
-      } break;
-    case "scissors":
-      switch (computerSelection.toLowerCase()){
-        case "paper": 
-          console.log("You Win! " + playerSelection + " beats " + computerSelection); 
-          result = 1;
-          break;
-        case "rock": 
-          console.log("You Lose! " + computerSelection + " beats " + playerSelection); 
-          result = -1;
-          break;
-      } break;
-    case "paper":
-      switch (computerSelection.toLowerCase()){
-        case "rock": 
-          console.log("You Win! " + playerSelection + " beats " + computerSelection); 
-          result = 1;
-          break;
-        case "scissors": 
-          console.log("You Lose! " + computerSelection + " beats " + playerSelection); 
-          result = -1;
-          break;
-      } break;
-  }
-  }
-  return result;
-  }
+  <div class = "last-play-result"></div>
 
-function game(){
-  function userPrompt(playerSelection = "", round = 1){
-    let acceptablePlays = ["rock", "paper", "scissors"];
-    
-    if (acceptablePlays.indexOf(playerSelection.toLowerCase()) == -1) {
-      playerSelection = prompt("Round #" + round + " Enter your play (rock, paper scissors):");
-      if (playerSelection == null) {
-        return null;
-      }
-      return userPrompt(playerSelection, round);
-    }  
-    return playerSelection;
-  }
+  <div class = "selection-container">
+    <h1 class = "selection-heading">Make Your Selection:</h1>
+    <div class = "selection-choices">
+      <input type="image" src="stone.png" class="selection" id="rock" name = "rock"/>
+      <input type="image" src="send.png" class="selection" id="paper" name = "paper"/>
+      <input type="image" src="scissors.png" class="selection" id="scissors" name = "scissors"/>
+    </div>
+  </div>
 
-  let winCount = 0;
-  let lossCount = 0;
-  for (let i = 0; i < 5; i ++){
-    let playerSelection = userPrompt("", i+1);
-    if (playerSelection === null) {
-      return 0;
-    }
-    let computerSelection = computerPlay();
-    let result = playRound(playerSelection, computerSelection);
-    if (result == -1){
-      lossCount ++;
-    }
-    else if (result == 1){
-      winCount ++;
-    }
-  }
-  console.log((winCount > lossCount) ? "Game Over! You Win!" : (winCount < lossCount)? "Game Over! You Lose!": "Game Over You Tied!")
-  return 1;
-}
-  
- game(); 
+  <div class = "footer">
+    <a class = "attribution" href="https://www.flaticon.com/free-icons/rock" title="rock icons">Rock icons created by Icongeek26 - Flaticon</a>
+    <a class = "attribution" href="https://www.flaticon.com/free-icons/scissors" title="scissors icons">Scissors icons created by Freepik - Flaticon</a>
+  </div>
 
-
-  </script>
 </body>
 </html>

@@ -1,0 +1,106 @@
+html {
+    margin: 0;
+    height: 100%;
+}
+body {
+    margin: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: darkgrey;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+}
+
+.scoreboard-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 400px; 
+    margin-top: -50px;
+    flex-grow: 0;
+}
+
+.individual-score-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0px;
+    margin: 0px;
+}
+
+.player-name{
+    font-size: 48px;
+    font-weight: bold;
+    padding: 0px;
+    margin-bottom: 10px;
+}
+
+.score {
+    font-size: 42px;
+    font-weight: bold;
+    padding: 0px;
+    margin-top: 10px;
+}
+
+.last-play-result{
+    height: 28px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 0px;
+    color: rgb(18, 87, 148);
+}
+
+.selection-container{
+    display: flex;
+    flex-direction: column; 
+    margin-top: -50px;
+}
+
+.selection-heading{
+    text-align: center; 
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.selection-choices{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0px 200px;
+}
+
+input{
+    width: 250px;
+    height: auto;
+    flex: 1, 1, auto;
+}
+
+.footer{
+    display: flex; 
+    justify-content: flex-start;
+    align-items: center;
+    background-color: black;
+    color: white;
+    padding: 0px 10px;
+}
+
+.attribution{
+    font-size: 10px;
+    text-decoration: none;
+    color: white;
+    margin: 0px;
+    padding: 0px;
+}
